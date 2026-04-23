@@ -858,17 +858,17 @@
   const baseOrgP2 = { ceo:[1,110], cto:[1,110], staff1:[1,320],   staff2:[0.5,240], eng_sr:[0,0], eng_mid:[1,360], cs:[1,240], sales:[1,240], marketing:[1,240], backoffice:[0.5,120] };
 
   const costPresets = {
-    // worst: V/ENTER月1件30万しか売れない想定。採用凍結・広告抑制・外注最小化
-    // リスクルール「最低キャッシュ500万割れで採用凍結・外注費圧縮」を前提条件として反映
+    // worst: V/ENTER月1件30万しか売れない想定。リスクルール「最低キャッシュ500万割れで採用凍結・外注費圧縮」発動版
+    // 期末キャッシュ≥625万（資本金分）確保を設計ターゲットに調整
     worst: {
       api_cost_pct: 40, social_pct: 15, unsee_pct: 0, loan: 125,
       churn_psingle: 5, churn_pflat: 5, churn_pent: 2, churn_enter: 5,
-      rent: 0, utility: 0, infra: 24, api_internal: 40, saas: 48, ads: 30, entertainment: 60, travel: 36,
+      rent: 0, utility: 0, infra: 24, api_internal: 40, saas: 48, ads: 30, entertainment: 40, travel: 24,
       hiring: 0, outsource: 100, training: 0, fees: 40, insurance: 20, supplies: 5, reserve: 30,
-      // Phase1：Staff2を落とす・マーケなし・BOパート最低稼働
+      // Phase1：Staff2落とす・マーケなし・BOパート最低稼働（現状維持）
       phase1: { ceo:[1,110], cto:[1,110], staff1:[0.5,240], staff2:[0,0],   eng_sr:[0,0], eng_mid:[0,0], cs:[1,240], sales:[1,240], marketing:[0,0], backoffice:[0.5,120] },
-      // Phase2：トラクション不足で増員ゼロ・ミドル業委入れず・Staff2入れず・マーケ入れず
-      phase2: { ceo:[1,110], cto:[1,110], staff1:[0.5,240], staff2:[0,0],   eng_sr:[0,0], eng_mid:[0,0], cs:[1,240], sales:[1,240], marketing:[0,0], backoffice:[0.5,120] }
+      // Phase2：売上伸びず → Salesロールオフ（リスクルール発動）、CS維持でplan_entトライアル対応のみ
+      phase2: { ceo:[1,110], cto:[1,110], staff1:[0.5,240], staff2:[0,0],   eng_sr:[0,0], eng_mid:[0,0], cs:[1,240], sales:[0,0],   marketing:[0,0], backoffice:[0.5,120] }
     },
     base: {
       api_cost_pct: 40, social_pct: 15, unsee_pct: 0, loan: 125,
